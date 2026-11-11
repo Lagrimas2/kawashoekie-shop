@@ -1,0 +1,505 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="CSS/styles1.css">
+
+    <!-- Internal CSS -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: hwb(103 81% 11%);
+            color: #324031;
+            line-height: 1.6;
+        }
+
+        /* Header and Navigation */
+        .top-header {
+            background: hwb(107 42% 22%);
+            color: white;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: white;
+            color: hwb(89 25% 62%);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 150px;
+            background: rgb(87, 118, 89);
+            border: 1px solid white;
+            display: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            padding: 10px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Hero */
+        .hero {
+            background: white;
+            margin: 25px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            border-radius: 10px;
+        }
+
+        .hero-text h2 {
+            font-size: 28px;
+            color: #172033;
+            margin: 10px 0;
+        }
+
+        .hero-text p {
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .hero-text small {
+            color: #00d966;
+            font-weight: bold;
+        }
+
+        .hero-text button {
+            background: #305747;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.15s ease;
+        }
+
+        .hero-text button:hover {
+            background: lime;
+            color: #172033;
+        }
+
+        .hero-text button:active {
+            background: lime;
+            color: #172033;
+        }
+
+        .hero-text em {
+            display: block;
+            font-size: 12px;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Notice */
+        .notice {
+            width: 90%;
+            max-width: 1000px;
+            margin: 15px auto;
+            background: #fff4d6;
+            padding: 12px;
+            border-left: 4px solid #6bab97;
+        }
+
+        .notice p {
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* Cards */
+        .two-column {
+            width: 90%;
+            max-width: 1000px;
+            margin: 15px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 18px;
+            border-radius: 9px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .card li,
+        .card p {
+            font-size: 13px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #172033;
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Gallery */
+        #gallery {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto 10px;
+            font-size: 18px;
+        }
+
+        .gallery {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Inline CSS Box */
+        .inline-box {
+            width: 90%;
+            max-width: 1000px;
+            margin: 15px auto;
+            padding: 18px;
+            background: white;
+            border-radius: 9px;
+        }
+
+        .inline-box h2 {
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #111a2b;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 25px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-list {
+                gap: 8px;
+            }
+
+            .nav-list a {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Header and Navigation -->
+    <header class="top-header">
+
+        <!-- Create area for logo -->
+        <div class="brand">
+            <span class="brand-mark">K</span>
+            <h1>KawaShoekie</h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-list">
+
+                <li>
+                    <a href="#">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#">Collections</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Running</a></li>
+                        <li><a href="#">Casual</a></li>
+                        <li><a href="#">Basketball</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#features">Features</a>
+                </li>
+
+                <li>
+                    <a href="#gallery">Gallery</a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <small>PREMIUM FOOTWEAR PRESENTATION</small>
+
+                <h2>Step Forward in Style and Comfort</h2>
+
+                <p>
+                    Explore our latest shoe showcase featuring sporty layout,
+                    product highlights, and modern CSS styling techniques.
+                </p>
+
+                <button>View Collection</button>
+
+                <!-- Internal CSS Example -->
+                <em>
+                    This line uses internal CSS from the style block.
+                </em>
+
+            </div>
+
+
+            <div class="hero-image">
+                <img src="images_ks/shoe1.jpg" alt="green running shoe">
+            </div>
+
+        </section>
+
+
+        <!-- Internal CSS Information -->
+        <section class="notice">
+
+            <strong>Internal CSS Demo</strong>
+
+            <p>
+                This box is styled in the HTML file using internal CSS,
+                while the rest of the page is styled using the external stylesheet.
+            </p>
+
+        </section>
+
+
+        <!-- Product Highlights and Size Guide -->
+        <section class="two-column">
+
+            <div class="card">
+
+                <h2>Product Highlights</h2>
+
+                <ul>
+                    <li>Lightweight and one alike upper material</li>
+                    <li>Breathable mesh design</li>
+                    <li>Cushioned sole support</li>
+                    <li>Available in multiple colors</li>
+                </ul>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Size Guide</h2>
+
+                <table>
+
+                    <tr>
+                        <th>Size</th>
+                        <th>Length (cm)</th>
+                        <th>Fit</th>
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td>26.0</td>
+                        <td>small</td>
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td>28.0</td>
+                        <td>Regular</td>
+                    </tr>
+
+                    <tr>
+                        <td>9</td>
+                        <td>29.0</td>
+                        <td>large</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Image Gallery -->
+        <h2 id="gallery">Image Gallery</h2>
+
+        <section class="gallery">
+
+            <img src="images_ks/shoe2.jpg" alt="Sneaker">
+
+            <img src="images_ks/shoe3.jpg" alt="green sneakers">
+
+            <img src="images_ks/shoe4.jpg" alt="blue and orange sneakers">
+
+        </section>
+
+
+        <!-- Why Choose and Purchase Links -->
+        <section class="two-column">
+
+            <div class="card">
+
+                <h2>Why Choose This Shoe</h2>
+
+                <ol>
+                    <li>Comfortable for daily wear</li>
+                    <li>Durable for long use</li>
+                    <li>Modern appearance for casual outfits</li>
+                </ol>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Purchase Links</h2>
+
+                <p>
+                    Visit our
+                    <a href="#">collection</a>
+                    or check out
+                    <a href="#">our store</a>.
+                </p>
+
+                <p>⭐ Designed for style and performance.</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Inline CSS Example -->
+        <section class="inline-box">
+
+            <h2>Inline CSS Example</h2>
+
+            <p style="color: #c0cb68;">
+                This sentence uses inline CSS to demonstrate direct
+                styling inside the HTML element.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 KawaShoekie Shoe Collection
+    </footer>
+
+</body>
+</html>
